@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="300.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeUI">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="文件">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="新建" />
+                        <MenuItem mnemonicParsing="false" text="打开" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveHd" text="保存" />
+                        <MenuItem mnemonicParsing="false" text="关闭" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="编辑">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="添加类型" />
+                        <MenuItem mnemonicParsing="false" text="添加属性" />
+                        <MenuItem mnemonicParsing="false" text="删除" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="发布">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="XML" />
+                        <MenuItem mnemonicParsing="false" text="json" />
+                        <MenuItem mnemonicParsing="false" text="lua" />
+                        <MenuItem mnemonicParsing="false" text="proto" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="帮助">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="关于数据原始编辑" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <items>
+                <Button mnemonicParsing="false" onAction="#addTypeHd" prefHeight="25.0" snapToPixel="false" text="T" />
+                <Button mnemonicParsing="false" onAction="#addNodeHd" prefHeight="25.0" text="N" />
+                <Button mnemonicParsing="false" prefHeight="25.0" text="D" />
+                <Button mnemonicParsing="false" prefHeight="25.0" snapToPixel="false" text="C" />
+                <Separator fx:id="s1" orientation="VERTICAL" />
+                <Label fx:id="nameTxt" text="命名:" />
+                <TextField fx:id="pName" onAction="#pNameHd" prefHeight="26.0" prefWidth="110.0" />
+                <Separator fx:id="s2" orientation="VERTICAL" />
+
+                <HBox fx:id="nodeSet" alignment="CENTER" spacing="3.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="typeTxt" text="属性设置:" />
+                        <TextField fx:id="tName" onAction="#tNameHd" prefHeight="26.0" prefWidth="120.0" />
+                        <ChoiceBox fx:id="typeChoice" prefHeight="26.0" prefWidth="50.0" />
+                        <RadioButton fx:id="r1" mnemonicParsing="false" text="可选">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="g1" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="r2" mnemonicParsing="false" text="必选" toggleGroup="$g1" />
+                        <RadioButton fx:id="r3" mnemonicParsing="false" text="重复" toggleGroup="$g1" />
+                    </children>
+                </HBox>
+            </items>
+        </ToolBar>
+        <HBox VBox.vgrow="ALWAYS">
+            <children>
+                <VBox prefWidth="150.0">
+                    <children>
+                        <ListView fx:id="l1" onMouseClicked="#typeListHd" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="100.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <ListView fx:id="l2" onMouseClicked="#nodeListHd" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>
