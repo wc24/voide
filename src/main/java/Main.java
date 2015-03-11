@@ -7,11 +7,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        new AppCore(primaryStage);
+
+        AppCore banerApp=new AppCore(primaryStage);
+        banerApp.showBaner();
     }
 
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }

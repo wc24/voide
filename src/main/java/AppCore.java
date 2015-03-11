@@ -6,49 +6,45 @@ import javafx.stage.Stage;
 public class AppCore extends Zero<VoideCommandKey,VoideMediatorKey> {
 
 
-    static StackPane root = new StackPane();
-    static AppCore zero;
-    static Stage stage;
+    public StackPane root = new StackPane();
+    public AppCore zero;
+    public Stage stage;
 
     public AppCore(Stage primaryStage){
         stage=primaryStage;
         zero=this;
+    }
+
+    public void showBaner() {
+        stage.setTitle("WelCome");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+        stage.setMinHeight(200);
+        stage.setMinWidth(300);
 
         addMediator(VoideMediatorKey.BANER,BanerView.class);
-        addMediator(VoideMediatorKey.HOME,HomeView.class);
-//        addMediator(VoideMediatorKey.TEST,TestView.class);
-//
-        addCommand(VoideCommandKey.MAKE_VO,FileCommand.class,"newFile");
-        addCommand(VoideCommandKey.OPEN_VO,FileCommand.class,"openFile");
-//        addCommand(VoideCommandKey.ADD_NODE,AddNodeCommand.class);
-//        addCommand(VoideCommandKey.ADD_TYPE,AddTypeCommand.class);
-//        addCommand(VoideCommandKey.TYPE_CHOOSE,AppCommand.class,"typeChoose");
-//        addCommand(VoideCommandKey.TYPE_RENAME,AppCommand.class,"reName");
-//        addCommand(VoideCommandKey.NODE_CHOOSE,AppCommand.class,"nodeChoose");
-//        addCommand(VoideCommandKey.RE_MODE,AppCommand.class,"reMode");
-//
-//
-//        addCommand(VoideCommandKey.SAVE,FileCommand.class,"save");
-//
-//
-//
-//
-//
-//
-//        addCommand(VoideCommandKey.CHOICE_TYPE,AppCommand.class,"choiceType");
-
-
-
-
-        primaryStage.setTitle("Value Object Development");
-        primaryStage.setScene(new Scene(root, 700, 430));
-        primaryStage.show();
-        primaryStage.setMinHeight(200);
-        primaryStage.setMinWidth(300);
-
-
+        addCommand(VoideCommandKey.CREATE_File, FileCommand.class, "newFile");
+        addCommand(VoideCommandKey.OPEN_File,FileCommand.class,"openFile");
+        addCommand(VoideCommandKey.SAVE_FILE,FileCommand.class,"saveFile");
         activate(VoideMediatorKey.BANER);
-//        activate(VoideMediatorKey.TEST);
+    }
+    public void showHome() {
+        stage.setTitle("Value Object Development");
+        stage.setScene(new Scene(root, 800, 600));
+        stage.show();
+        stage.setMinHeight(200);
+        stage.setMinWidth(300);
 
+
+        addMediator(VoideMediatorKey.HOME,HomeView.class);
+        addCommand(VoideCommandKey.SAVE_FILE, FileCommand.class, "saveFile");
+        addCommand(VoideCommandKey.ADD_CLASS, AppCommand.class, "addClass");
+        addCommand(VoideCommandKey.ADD_ITEM, AppCommand.class, "addItem");
+        addCommand(VoideCommandKey.ADD_INSTANCE, AppCommand.class, "addInstance");
+        addCommand(VoideCommandKey.DELETE_SELECTED, AppCommand.class, "deleteSelected");
+        addCommand(VoideCommandKey.SELECT_CLASS, AppCommand.class, "selectClass");
+        addCommand(VoideCommandKey.SELECT_ITEM, AppCommand.class, "selectItem");
+
+        activate(VoideMediatorKey.HOME);
     }
 }
