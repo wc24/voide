@@ -79,6 +79,10 @@ public class BanerCommand extends VoideCommand {
         }
 
         FileWriter fileWriter = null;
+        if(!banerProxy.recentFile.isDirectory()){
+            new File(banerProxy.recentFile.getParent()).mkdirs();
+        }
+
         if(!banerProxy.recentFile.isFile()){
             try {
                 banerProxy.recentFile.createNewFile();
@@ -86,6 +90,7 @@ public class BanerCommand extends VoideCommand {
                 e.printStackTrace();
             }
         }
+
 
         try {
             fileWriter = new FileWriter(banerProxy.recentFile);

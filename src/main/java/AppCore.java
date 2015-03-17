@@ -25,7 +25,7 @@ public class AppCore extends Zero<VoideCommandKey,VoideMediatorKey> {
 
     public void showBaner() {
         stage.setTitle("WelCome");
-        stage.setScene(new Scene(root, 700, 400));
+        stage.setScene(new Scene(root, 800, 500));
         stage.show();
         stage.setMinHeight(200);
         stage.setMinWidth(300);
