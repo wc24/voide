@@ -8,8 +8,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        AppCore banerApp=new AppCore(primaryStage);
-        banerApp.showBaner();
+//        AppCore banerApp=new AppCore(primaryStage);
+//        banerApp.showBaner();
+
+        AppCore.showBaner(primaryStage);
     }
 
 

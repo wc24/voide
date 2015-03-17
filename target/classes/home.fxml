@@ -6,87 +6,111 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<HBox prefHeight="561.0" prefWidth="800.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="674.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Class&amp;Instance">
-         <content>
-            <ListView fx:id="classListView" prefWidth="150.0" />
-         </content>
-      </TitledPane>
-    <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minWidth="50.0" text="Item&amp;Attribute" HBox.hgrow="ALWAYS">
-        <content>
-            <ListView fx:id="itemListView" maxWidth="1.7976931348623157E308" />
-         </content>
-      </TitledPane>
-      <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" prefWidth="160.0" text="Preferences">
-         <content>
-            <VBox minWidth="180.0" prefWidth="180.0" spacing="5.0">
-               <children>
-                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addClassHd" text="Add Class" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addItemHd" text="Add Item" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addInstanceHd" text="Add Instance" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteSelectedHd" text="Delete Selected" />
-                  <Separator />
-                  <AnchorPane>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" onAction="#addClassHd" text="Add Class" />
+            <Button mnemonicParsing="false" onAction="#addItemHd" text="Add Item" />
+            <Button mnemonicParsing="false" onAction="#addInstanceHd" text="Add Instance" />
+            <Button mnemonicParsing="false" onAction="#deleteSelectedHd" text="Delete" />
+            <Separator orientation="VERTICAL" />
+            <Button mnemonicParsing="false" onAction="#saveHd" text="save" />
+            <MenuButton alignment="CENTER" mnemonicParsing="false" popupSide="TOP" text="Export">
+              <items>
+                <MenuItem mnemonicParsing="false" text="XML" />
+                <MenuItem mnemonicParsing="false" onAction="#exportJsonHd" text="JSON" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportLuaHd" text="LUA" />
+                  <MenuItem mnemonicParsing="false" text="Proto" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportExcelHd" text="Excel" />
+              </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" mnemonicParsing="false" popupSide="TOP" text="Import">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="XML" />
+                  <MenuItem mnemonicParsing="false" text="JSON" />
+                  <MenuItem mnemonicParsing="false" text="Proto" />
+                  <MenuItem mnemonicParsing="false" onAction="#importExcelHd" text="Excel" />
+               </items>
+            </MenuButton>
+            <MenuButton alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="TOP" text="Export Proxy">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="lua" />
+                  <MenuItem mnemonicParsing="false" text="as3" />
+                  <MenuItem mnemonicParsing="false" text="java" />
+                  <MenuItem mnemonicParsing="false" text="haxe" />
+                  <MenuItem mnemonicParsing="false" text="c++" />
+               </items>
+            </MenuButton>
+        </items>
+      </ToolBar>
+      <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" text="Class&amp;Instance">
+               <content>
+                  <ListView fx:id="classListView" onMouseClicked="#classListViewHd" prefWidth="150.0" />
+               </content>
+            </TitledPane>
+          <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minWidth="50.0" text="Item&amp;Attribute" HBox.hgrow="ALWAYS">
+              <content>
+                  <ListView fx:id="itemListView" maxWidth="1.7976931348623157E308" onMouseClicked="#itemListViewHd" />
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" prefWidth="160.0" text="Preferences">
+               <content>
+                  <VBox minWidth="180.0" prefWidth="180.0" spacing="5.0">
                      <children>
-                        <TextField fx:id="nameUI" layoutX="49.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
-                        <Label layoutY="5.0" text="Name:  " />
-                     </children>
-                  </AnchorPane>
-                  <Separator />
-                  <AnchorPane>
-                     <children>
-                        <TextField fx:id="idUI" layoutX="49.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
-                        <Label layoutY="5.0" text="ID:" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane>
-                     <children>
-                        <Label layoutY="5.0" text="Class:   " />
-                        <ChoiceBox fx:id="classUI" layoutX="49.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </AnchorPane>
-                  <VBox spacing="5.0">
-                     <children>
-                        <RadioButton mnemonicParsing="false" text="Repeated">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="type" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Optional" toggleGroup="$type" />
-                        <RadioButton mnemonicParsing="false" text="Required" toggleGroup="$type" />
-                     </children>
-                     <padding>
-                        <Insets left="45.0" />
-                     </padding>
-                  </VBox>
-                  <Separator />
-                  <AnchorPane>
-                     <children>
-                        <TextField fx:id="valueUI" layoutX="48.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
+                        <AnchorPane>
+                           <children>
+                              <TextField fx:id="nameUI" layoutX="49.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
+                              <Label layoutY="5.0" text="Name:  " />
+                           </children>
+                        </AnchorPane>
+                        <Separator />
+                        <VBox fx:id="itemBox" spacing="5.0">
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <Label layoutY="5.0" text="Class:   " />
+                                    <ChoiceBox fx:id="classUI" layoutX="49.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </AnchorPane>
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" text="Required">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="typeGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Optional" toggleGroup="$typeGroup" />
+                                    <RadioButton mnemonicParsing="false" text="Repeated" toggleGroup="$typeGroup" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="45.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Separator />
+                        <AnchorPane>
+                           <children>
+                              <TextField fx:id="idUI" layoutX="48.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" />
+                              <Label layoutY="5.0" text="ID:  " />
+                           </children>
+                        </AnchorPane>
                         <Label layoutY="5.0" text="Value:  " />
+                        <TextArea fx:id="valueUI" />
+                        <Separator />
+                        <Label text="Annotation:" />
+                        <TextArea fx:id="annotationUI" VBox.vgrow="ALWAYS" />
                      </children>
-                  </AnchorPane>
-                  <Separator />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Export XML" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Export JSON" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Export Proto" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Export Excel" />
-                  <MenuButton alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" popupSide="TOP" text="Export Proxy">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="lua" />
-                      <MenuItem mnemonicParsing="false" text="as3" />
-                        <MenuItem mnemonicParsing="false" text="java" />
-                        <MenuItem mnemonicParsing="false" text="haxe" />
-                        <MenuItem mnemonicParsing="false" text="c++" />
-                    </items>
-                  </MenuButton>
-               </children>
-            </VBox>
-         </content>
-      </TitledPane>
+                  </VBox>
+               </content>
+            </TitledPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
    </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-</HBox>
+</VBox>

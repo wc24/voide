@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.lime.zeromvc:zeromvc-java:1.0.1">
     <CLASSES>
-      <root url="jar:///tool/java/m2/repository/com/lime/zeromvc/zeromvc-java/1.0.1/zeromvc-java-1.0.1.jar!/" />
+      <root url="jar:///tools/java/m2/repository/com/lime/zeromvc/zeromvc-java/1.0.1/zeromvc-java-1.0.1.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar:///tool/java/m2/repository/com/lime/zeromvc/zeromvc-java/1.0.1/zeromvc-java-1.0.1-javadoc.jar!/" />
+      <root url="jar:///tools/java/m2/repository/com/lime/zeromvc/zeromvc-java/1.0.1/zeromvc-java-1.0.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar:///tool/java/m2/repository/com/lime/zeromvc/zeromvc-java/1.0.1/zeromvc-java-1.0.1-sources.jar!/" />
+      <root url="jar:///tools/java/m2/repository/com/lime/zeromvc/zeromvc-java/1.0.1/zeromvc-java-1.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
